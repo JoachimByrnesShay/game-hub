@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import "./App.css";
 import NavBar from "./components/NavBar";
+import GameGrid from "./components/GameGrid";
 
 function App() {
   return (
@@ -38,7 +39,7 @@ function App() {
             area="main"
             // bg="dodgerBlue"
           >
-            Main
+            <GameGrid />
           </GridItem>
         </Grid>
       </div>
