@@ -4,9 +4,28 @@ import {
 } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
+import GameCardSkeleton from "./GameCardSkeleton";
 
 const GameGrid = () => {
-  const { games, error } = useGames();
+  const { games, error, isLoading } =
+    useGames();
+
+  // const skeletons = Array(6)
+  //   .fill(1)
+  //   .reduce((accum, val, ix) => {
+  //     let addThis;
+  //     if (accum.length === 0) {
+  //       addThis = 0;
+  //     } else addThis = accum[ix - 1];
+  //     return [...accum, addThis + 1];
+  //   }, []);
+  const skeletons = ((n = 6) => {
+    const arr = [];
+    for (let i = 1; i <= n; i++) {
+      arr.push(i);
+    }
+    return arr;
+  })();
   return (
     <>
       {error && <Text>{error}</Text>}
@@ -20,6 +39,12 @@ const GameGrid = () => {
         spacing={10}
         padding="10px"
       >
+        {isLoading &&
+          skeletons.map((skeleton) => (
+            <GameCardSkeleton
+              key={skeleton}
+            />
+          ))}
         {games.map((game) => (
           <GameCard
             key={game.id}
