@@ -10,7 +10,7 @@ const GameCardContainer = ({
 }: Props) => {
   return (
     <Box
-      width="300px"
+      // maxWidth="300px"
       borderRadius={10}
       overflow={"hidden"}
     >
