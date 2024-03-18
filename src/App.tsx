@@ -11,6 +11,7 @@ import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { Genre } from "./hooks/useGenres";
+import PlatformSelector from "./components/PlatformSelector";
 
 function App() {
   const [
@@ -61,6 +62,7 @@ function App() {
             area="main"
             // bg="dodgerBlue"
           >
+            <PlatformSelector />
             <GameGrid
               selectedGenre={
                 selectedGenre
