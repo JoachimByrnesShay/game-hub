@@ -51,6 +51,9 @@ function App() {
                     genre
                   )
                 }
+                selectedGenre={
+                  selectedGenre
+                }
               />
             </GridItem>
           </Show>
