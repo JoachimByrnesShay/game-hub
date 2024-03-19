@@ -1,7 +1,5 @@
 import { useState } from "react";
 import {
-  Button,
-  ButtonGroup,
   Grid,
   GridItem,
   Show,
@@ -14,15 +12,25 @@ import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
 
+export interface GameQuery {
+  genre: Genre | null;
+  platform: Platform | null;
+}
+
 function App() {
-  const [
-    selectedGenre,
-    setSelectedGenre,
-  ] = useState<Genre | null>(null);
-  const [
-    selectedPlatform,
-    setSelectedPlatform,
-  ] = useState<Platform | null>(null);
+  // const [
+  //   selectedGenre,
+  //   setSelectedGenre,
+  // ] = useState<Genre | null>(null);
+  // const [
+  //   selectedPlatform,
+  //   setSelectedPlatform,
+  // ] = useState<Platform | null>(null);
+
+  const [gameQuery, setGameQuery] =
+    useState<GameQuery>(
+      {} as GameQuery
+    );
   return (
     <>
       <div>
@@ -50,16 +58,17 @@ function App() {
               // bg="gold"
             >
               <GenreList
+                selectedGenre={
+                  gameQuery.genre
+                }
                 onSelectGenre={(
                   genre
-                ) =>
-                  setSelectedGenre(
-                    genre
-                  )
-                }
-                selectedGenre={
-                  selectedGenre
-                }
+                ) => {
+                  setGameQuery({
+                    ...gameQuery,
+                    genre: genre,
+                  });
+                }}
               />
             </GridItem>
           </Show>
@@ -71,21 +80,17 @@ function App() {
               onSelectPlatform={(
                 platform
               ) =>
-                setSelectedPlatform(
-                  platform
-                )
+                setGameQuery({
+                  ...gameQuery,
+                  platform: platform,
+                })
               }
               selectedPlatform={
-                selectedPlatform
+                gameQuery.platform
               }
             />
             <GameGrid
-              selectedPlatform={
-                selectedPlatform
-              }
-              selectedGenre={
-                selectedGenre
-              }
+              gameQuery={gameQuery}
             />
           </GridItem>
         </Grid>
