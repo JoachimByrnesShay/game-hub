@@ -1,5 +1,7 @@
 import { useState } from "react";
 import {
+  Box,
+  Flex,
   Grid,
   GridItem,
   HStack,
@@ -79,24 +81,27 @@ function App() {
             area="main"
             // bg="dodgerBlue"
           >
-            <HStack
-              spacing={5}
+            <Flex
+              // spacing={5}
               paddingLeft={2}
               marginBottom={5}
             >
-              <PlatformSelector
-                onSelectPlatform={(
-                  platform
-                ) =>
-                  setGameQuery({
-                    ...gameQuery,
-                    platform: platform,
-                  })
-                }
-                selectedPlatform={
-                  gameQuery.platform
-                }
-              />
+              <Box marginRight={5}>
+                <PlatformSelector
+                  onSelectPlatform={(
+                    platform
+                  ) =>
+                    setGameQuery({
+                      ...gameQuery,
+                      platform:
+                        platform,
+                    })
+                  }
+                  selectedPlatform={
+                    gameQuery.platform
+                  }
+                />
+              </Box>
               <SortSelector
                 onSelectSortOrder={(
                   sortOrder
@@ -111,7 +116,7 @@ function App() {
                   gameQuery.sortOrder
                 }
               />
-            </HStack>
+            </Flex>
             <GameGrid
               gameQuery={gameQuery}
             />
