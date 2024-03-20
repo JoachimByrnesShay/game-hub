@@ -6,6 +6,7 @@ import {
   Text,
   Spinner,
   Button,
+  Heading,
 } from "@chakra-ui/react";
 import useGenres, {
   Genre,
@@ -29,39 +30,50 @@ const GenreList = ({
   if (error) return null;
   if (isLoading) return <Spinner />;
   return (
-    <List>
-      {genres.map((genre) => (
-        <ListItem
-          key={genre.id}
-          paddingY="5px"
-        >
-          <HStack>
-            <Image
-              boxSize="32px"
-              borderRadius={8}
-              src={getCroppedImageUrl(
-                genre.image_background
-              )}
-            />
-            <Button
-              onClick={() =>
-                onSelectGenre(genre)
-              }
-              fontSize="large"
-              variant="link"
-              fontWeight={
-                selectedGenre?.id ===
-                genre.id
-                  ? "bold"
-                  : "normal"
-              }
-            >
-              {genre.name}
-            </Button>
-          </HStack>
-        </ListItem>
-      ))}
-    </List>
+    <>
+      <Heading
+        fontSize="2xl"
+        marginBottom={3}
+      >
+        Genres
+      </Heading>
+      <List>
+        {genres.map((genre) => (
+          <ListItem
+            key={genre.id}
+            paddingY="5px"
+          >
+            <HStack>
+              <Image
+                boxSize="32px"
+                borderRadius={8}
+                src={getCroppedImageUrl(
+                  genre.image_background
+                )}
+                objectFit="cover"
+              />
+              <Button
+                onClick={() =>
+                  onSelectGenre(genre)
+                }
+                whiteSpace={"normal"}
+                textAlign="left"
+                fontSize="large"
+                variant="link"
+                fontWeight={
+                  selectedGenre?.id ===
+                  genre.id
+                    ? "bold"
+                    : "normal"
+                }
+              >
+                {genre.name}
+              </Button>
+            </HStack>
+          </ListItem>
+        ))}
+      </List>
+    </>
   );
 };
 
