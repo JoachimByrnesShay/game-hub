@@ -3,7 +3,6 @@ import {
   List,
   ListItem,
   Image,
-  Text,
   Spinner,
   Button,
   Heading,
@@ -38,7 +37,7 @@ const GenreList = ({
         Genres
       </Heading>
       <List>
-        {genres.map((genre) => (
+        {genres?.map((genre: Genre) => (
           <ListItem
             key={genre.id}
             paddingY="5px"
