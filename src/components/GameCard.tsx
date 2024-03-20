@@ -23,10 +23,8 @@ const GameCard = ({ game }: Props) => {
         )}
       />
       <CardBody>
-        <Heading fontSize="2xl">
-          {game.name}
-        </Heading>
         <HStack
+          marginBottom={3}
           justifyContent={
             "space-between"
           }
@@ -40,6 +38,9 @@ const GameCard = ({ game }: Props) => {
             score={game.metacritic}
           />
         </HStack>
+        <Heading fontSize="2xl">
+          {game.name}
+        </Heading>
       </CardBody>
     </Card>
   );
